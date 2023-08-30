@@ -22,14 +22,31 @@ namespace School_Project
             //the Main courses in the school
             string[] SchoolCourses = new string[5];
 
-            Console.WriteLine("MetaWolves Educational system");
-            Console.WriteLine("You need to do a few setups before starting the system");
-            Console.WriteLine("First of all, Enter 5 courses to the system");
+            Console.WriteLine("\t\tMetaWolves Educational system\n");
+            Console.WriteLine("Create a manager account:");
+            
+            Console.WriteLine("Please enter the following data:");
+            Console.WriteLine("Natinal ID");
+            string SSN=Console.ReadLine();
+            Console.WriteLine("First Name:");
+            string Fname = Console.ReadLine();
+            Console.WriteLine("Last Name:");
+            string Lname = Console.ReadLine();
+            Console.WriteLine("Date of birth:");
+            string DOB = Console.ReadLine();
+            Console.WriteLine("Level:");
+            int level = int.Parse(Console.ReadLine());
+            Console.WriteLine("Gender (M/F):");
+            char Gender = char.Parse(Console.ReadLine());
+
+            Console.WriteLine("You need to do a few setups before starting the system:");
+            Console.WriteLine("Enter 5 course names to the system:");
             for(int i=0; i < SchoolCourses.Length;i++)
             {
                 SchoolCourses[i]=Console.ReadLine();
             }
 
+            
             Console.Clear();
 
 
