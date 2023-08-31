@@ -8,28 +8,29 @@ namespace School_Project
 {
     internal class Course
     {
-        private int sID;
+        private int SubjectID;
+        private string SubjectName;
+
         public int SID
         {
             get
             {
-                return this.sID;
+                return this.SubjectID;
             }
             set
             {
-                this.sID = value;
+                this.SubjectID = value;
             }
         }
-        private string sName;
         public string SName
         {
             get
             {
-                return this.sName;
+                return this.SubjectName;
             }
             set
             {
-                this.sName = value;
+                this.SubjectName = value;
             }
         }
     }

@@ -87,15 +87,45 @@ namespace School_Project
             this.SSN = ssn;
         }
 
-        //public List<string> GetList() 
-        //{
-        //    return this.StudentCourses;
-        //}
+        public Student StudentRegistration(string SSN)
+        {
+            this.SSN= SSN;
+            Console.WriteLine("Please enter the following data:");
+            Console.WriteLine("FirstName:");
+            this.Firstname=Console.ReadLine();
+            Console.WriteLine("LastName:");
+            this.Lastname=Console.ReadLine();
+            Console.WriteLine("Date of birth:");
+            this.DOB=Console.ReadLine();
+            Console.WriteLine("Level:");
+            this.level=int.Parse(Console.ReadLine());
+            Console.WriteLine("Gender (M/F):");
+            this.Gender = char.ToUpper(char.Parse(Console.ReadLine()));
 
-        //public void setList(List<string> STcourses)
-        //{
-        //    this.StudentCourses= STcourses;
-        //}
+            this.StudentCourses = new List<String>();
+            return this;
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("National ID:" + GetSSN());
+            Console.WriteLine("Studnet Name:" + GetFName() + " " + GetLName());
+            Console.WriteLine("Date of birth:" + GetDOB());
+            Console.WriteLine("Gender (M/F):" + GetGender());
+            Console.WriteLine("Level:" + GetLevel());
+            Console.WriteLine("Courses assigned:");
+            if (StudentCourses.Count > 0)
+            {
+                for (int j = 0; j < StudentCourses.Count; j++)
+                {
+                    Console.WriteLine("Course " + (j + 1) + " is " + StudentCourses[j]);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No courses are assigned under this name yet");
+            }
+        }
         
     }
 
