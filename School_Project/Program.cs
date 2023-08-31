@@ -29,15 +29,16 @@ namespace School_Project
             
 
             //needed variables
-            //string[] SchoolCourses = new string[5];
             string course;
             Random random = new Random();
 
+            //First step :To Setup and activate the system
             Console.WriteLine("\t\t\t-------------------------------------------------\n");
             Console.WriteLine("\t\t\t\t   MetaWolves Educational system\n");
             Console.WriteLine("\t\t\t-------------------------------------------------\n\n");
             Console.WriteLine("To start the setup, you need to create a manager account");
 
+            //Creating Manager account
             Console.WriteLine("\n\t\tSTEP 1\n");
             Console.WriteLine("Please enter the following data:");
             Console.WriteLine("Natinal ID");
@@ -49,18 +50,20 @@ namespace School_Project
             Console.WriteLine("Date of birth:");
             string DOB = Console.ReadLine();
             Console.WriteLine("Gender (M/F):");
-            char Gender = char.Parse(Console.ReadLine());
+            char Gender = char.ToUpper(char.Parse(Console.ReadLine()));
             Console.WriteLine("Salary:");
             decimal salary = decimal.Parse(Console.ReadLine());
 
-            Gender = char.ToUpper(Gender);
             Executive executive = new Executive(Fname, Lname, DOB, Gender, SSN, "manager", salary, "School");
             EmployeesList.Add(executive);
 
             Console.WriteLine("Your account is Successfully added...");
 
             Console.Clear();
+            // the end of the first step
 
+
+            //Second step: Creating the school object
             Console.WriteLine("\t\t   ---------------------------------------------------------\n");
             Console.WriteLine("\t\t\tWelcome " + Fname + " " + Lname + " to the MetaWolves educational system\n");
             Console.WriteLine("\t\t   ---------------------------------------------------------\n");
@@ -110,7 +113,9 @@ namespace School_Project
             Console.WriteLine("Your School information is Successfully added to the system...");
 
             Console.Clear();
+            //end of second step
 
+            //Third step: inserting the courses into the system
             Console.WriteLine("\t\t   ---------------------------------------------------------\n");
             Console.WriteLine("\t\t\tWelcome " + Fname + " " + Lname + " to the MetaWolves educational system\n");
             Console.WriteLine("\t\t   ---------------------------------------------------------\n");
@@ -128,17 +133,13 @@ namespace School_Project
                 SchoolCourses.Add(newCourse);
             }
 
-
-            //for (int i = 0; i < SchoolCourses.Length; i++)
-            //{
-            //    SchoolCourses[i] = Console.ReadLine();
-            //}
-
             Console.WriteLine("You have added " + SchoolCourses.Count + " of courses successfully...");
 
             Console.Clear();
+            // end of third step
 
 
+            //Starting to interact with system
             Console.WriteLine("\t\t-----------------------------------------------------------------\n");
             Console.WriteLine("\t\t\t          Welcome to " + name + " School        \n");
             Console.WriteLine("\t\t\t  supported by the MetaWolves educational system       \n");
@@ -337,10 +338,8 @@ namespace School_Project
                                         }
                                         else if(choice2 == 2)
                                         {
-                                            //for(int x=0; x<SchoolCourses.Length;i++)
-                                            //{
-                                                
-                                            //}
+                                            if (SchoolCourses.Count == 5)
+                                                Console.WriteLine("Sorry the course list is full");
                                         }
 
                                     }
