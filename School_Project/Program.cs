@@ -12,14 +12,17 @@ namespace School_Project
     {
         static void Main(string[] args)
         {
-            // create neccessary objects
+            // create neccessary emplty objects
             Student newStudent = new Student();
             Teacher newTeacher=new Teacher();
             Executive newExecutive = new Executive();
+            Employee newEmployee = new Employee();
+            Rooms room = new Rooms();
 
             List<Student> StudentList = new List<Student>();
             List<Employee> EmployeesList = new List<Employee>();
             List<Grading> CourseList = new List<Grading>();
+            List<Rooms> RoomList = new List<Rooms>();
             
 
             //the Main courses in the school
@@ -66,6 +69,7 @@ namespace School_Project
             
             Console.WriteLine("How many students are registered in your school so far?");
             int num_of_students = int.Parse(Console.ReadLine());
+            Console.WriteLine("Please add all the students' data one by one:");
             for(int j=1;j<=num_of_students;j++)
             {
                 Console.WriteLine("Student No. " + j+" :");
@@ -76,20 +80,26 @@ namespace School_Project
                 Console.WriteLine("----------------------");
             }
             
-            Console.WriteLine("How many employees are working at your school excluding you?");
+            Console.WriteLine("In general, how many employees are working at your school excluding you?");
             int num_of_employees = int.Parse(Console.ReadLine());
-            for(int i=0;i<num_of_employees;i++)
+
+            for (int i = 0; i < num_of_employees; i++)
             {
-                Console.WriteLine("Employees No. " + j + " :");
+                Console.WriteLine("Employee No. " + i + " :");
                 Console.WriteLine("National ID:");
                 SSN = Console.ReadLine();
-                newStudent = newStudent.StudentRegistration(SSN);
-                StudentList.Add(newStudent);
+                newEmployee=newEmployee.EmployeeRegistration(SSN);
+                EmployeesList.Add(newEmployee);
                 Console.WriteLine("----------------------");
             }
-            
+
             Console.WriteLine("How many working spaces (rooms) are at your school?");
             int num_of_rooms = int.Parse(Console.ReadLine());
+            for(int i=0;i<num_of_rooms;i++)
+            {
+                room = room.RoomsRegisteration();
+                RoomList.Add(room); 
+            }
 
             School school = new School(name, location, num_of_students, num_of_employees, num_of_rooms);
             Console.WriteLine("Your School information is Successfully added to the system...");

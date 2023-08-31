@@ -10,7 +10,19 @@ namespace School_Project
     {
         private int Max_Capacity;
         private int RoomNo;
-        private Boolean Accupied;
+        private Boolean occupied;
+        private string roomType;
+
+        public Rooms() { }
+
+        public Rooms(int max_Capacity, int roomNo, bool occupied, string type)
+        {
+            Max_Capacity = max_Capacity;
+            RoomNo = roomNo;
+            this.occupied = occupied;
+            Type = type;
+        }
+
         public int MaxCap
         {
             get { return this.Max_Capacity; }
@@ -24,10 +36,38 @@ namespace School_Project
             set { this.RoomNo = value; }
         }
 
-        public Boolean accaup
+        public Boolean Occupied
         {
-            get { return this.Accupied; }
-            set { this.Accupied = value; }
+            get { return this.occupied; }
+            set { this.occupied = value; }
+        }
+
+        public string Type
+        {
+            get { return this.roomType; }
+            set { this.roomType = value; }
+        }
+
+        public Rooms RoomsRegisteration()
+        {
+            Console.WriteLine("The Room number :");
+            this.RoomNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("How many students can learn in this room (the maximum capacity)?");
+            this.MaxCap = int.Parse(Console.ReadLine());
+            Console.WriteLine("Is it assigned to any course? (Yes/No)");
+            string answer = Console.ReadLine();
+            if (answer.Equals("Yes") || answer.Equals("yes") || answer.Equals("YES"))
+            {
+                this.Occupied = true;
+            }
+            else if (answer.Equals("no") || answer.Equals("No") || answer.Equals("NO"))
+            {
+                this.Occupied = false;
+            }
+            Console.WriteLine("What type of room is it: Class room, meeting room, or teacher lounge");
+            this.Type=Console.ReadLine();
+
+            return this;
         }
     }
 }
