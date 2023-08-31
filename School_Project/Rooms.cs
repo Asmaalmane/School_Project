@@ -12,15 +12,17 @@ namespace School_Project
         private int RoomNo;
         private Boolean occupied;
         private string roomType;
+        private int SubjectID;
 
         public Rooms() { }
 
-        public Rooms(int max_Capacity, int roomNo, bool occupied, string type)
+        public Rooms(int max_Capacity, int roomNo, bool occupied, string type, int subjectID)
         {
             Max_Capacity = max_Capacity;
             RoomNo = roomNo;
             this.occupied = occupied;
             Type = type;
+            SubjectID = subjectID;
         }
 
         public int MaxCap
@@ -66,6 +68,8 @@ namespace School_Project
             }
             Console.WriteLine("What type of room is it: Class room, meeting room, or teacher lounge");
             this.Type=Console.ReadLine();
+
+            this.SubjectID = -1;
 
             return this;
         }

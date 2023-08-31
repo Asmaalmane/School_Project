@@ -295,7 +295,7 @@ namespace School_Project
                                     if (EmployeesList[i].GetSSN().Equals(SSN) && EmployeesList[i].GetRole().Equals("manager"))
                                     {
                                         Console.WriteLine("What would you like to do:");
-                                        Console.WriteLine("1. Assign teacher to course.");
+                                        Console.WriteLine("1. Assign teacher to course");
                                         Console.WriteLine("2. Add a course");
                                         Console.WriteLine("3. Delete a course");
                                         Console.WriteLine("4. Assign class room");
@@ -325,6 +325,13 @@ namespace School_Project
                                                         newCourse.SName = course;
                                                         newTeacher = newTeacher.AddSubjectToTeacher(EmployeesList[j], newCourse);
                                                         EmployeesList[j] = newTeacher;
+                                                        //foreach (var r in RoomList)
+                                                        //{
+                                                        //    if (r.Occupied == false)
+                                                        //    {
+
+                                                        //    }
+                                                        //}
                                                         break;
                                                     }
                                                     else
@@ -340,10 +347,79 @@ namespace School_Project
                                         {
                                             if (SchoolCourses.Count == 5)
                                                 Console.WriteLine("Sorry the course list is full");
-                                        }
+                                            else
+                                            {
+                                                string subject;
+                                                int courseID;
+                                                int x;
 
+                                                Console.WriteLine("Enter the course name:");
+                                                subject = Console.ReadLine();
+                                                courseID = random.Next();
+
+                                                for (x = 0; x < 5; x++)
+                                                {
+
+                                                    if (SchoolCourses[i].SName == subject)
+                                                    {
+                                                        Console.WriteLine("The subject is already added to the list");
+                                                        break;
+                                                    }
+                                                }
+
+                                                if (x <= 5)
+                                                {
+                                                    newCourse.SName = subject;
+                                                    newCourse.SID = courseID;
+                                                    SchoolCourses.Add(newCourse);
+                                                }
+                                                Console.WriteLine("The number of courses in system is " + SchoolCourses.Count);
+                                                    
+                                                }
+                                            }
+                                        else if (choice2==3)
+                                        {
+                                            Console.WriteLine("Enter the course ID that you would like to delete:");
+                                            int ID = int.Parse(Console.ReadLine());
+                                            name=FindCourse(SchoolCourses,ID);
+                                            Console.WriteLine("The course is successfully deleted...");
+                                            Console.WriteLine(SchoolCourses.Count+" left in the system");
+                                        }
+                                        else if(choice2==4)
+                                        {
+                                            //Assign class room
+                                        }
+                                        else if (choice2 == 5)
+                                        {
+                                            //Display All Employees
+                                        }
+                                        else if (choice2 == 6)
+                                        {
+                                            //Display Teachers");
+                                        }
+                                        else if (choice2 == 7)
+                                        {
+                                            //Display Executives");
+                                        }
+                                        else if (choice2 == 8)
+                                        {
+                                            //Display Students
+                                            foreach(var st in StudentList)
+                                            {
+                                                st.Display();
+                                                Console.WriteLine("---------------------------");
+                                            }
+                                        }
+                                        else if (choice2 == 9)
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Invalid input");
+                                        }
                                     }
-                                    else
+                                else
                                     {
                                         Console.WriteLine("Sorry you do not have access to this territory.");
                                     }
