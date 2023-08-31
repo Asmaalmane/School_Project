@@ -16,11 +16,11 @@ namespace School_Project
         private char Gender;
         private string SSN;
         private int level;
-        public List<string> StudentCourses;
+        public List<Course> StudentCourses;
         //private int max_num_of_Subjects=5;
 
         public Student() { }
-        public Student(string Fname, string Lname, string DOB, char Gender, string SSN,int level,List<string> StudentCourses)
+        public Student(string Fname, string Lname, string DOB, char Gender, string SSN,int level,List<Course> StudentCourses)
         {
             this.Firstname = Fname;
             this.Lastname = Lname;
@@ -102,7 +102,7 @@ namespace School_Project
             Console.WriteLine("Gender (M/F):");
             this.Gender = char.ToUpper(char.Parse(Console.ReadLine()));
 
-            this.StudentCourses = new List<String>();
+            this.StudentCourses = new List<Course>();
             return this;
         }
 
@@ -118,7 +118,7 @@ namespace School_Project
             {
                 for (int j = 0; j < StudentCourses.Count; j++)
                 {
-                    Console.WriteLine("Course " + (j + 1) + " is " + StudentCourses[j]);
+                    Console.WriteLine("Course ID:" + StudentCourses[j].SID + " is " + StudentCourses[j].SName);
                 }
             }
             else

@@ -10,7 +10,9 @@ namespace School_Project
     {
         private int SubjectID;
         private string SubjectName;
+        private string teacherSSN;
 
+        public Course() { }
         public int SID
         {
             get
@@ -31,6 +33,17 @@ namespace School_Project
             set
             {
                 this.SubjectName = value;
+            }
+        }
+        public string TeacherSSN
+        {
+            get
+            {
+                return this.teacherSSN;
+            }
+            set
+            {
+                this.teacherSSN = value;
             }
         }
     }

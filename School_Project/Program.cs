@@ -18,15 +18,20 @@ namespace School_Project
             Executive newExecutive = new Executive();
             Employee newEmployee = new Employee();
             Rooms room = new Rooms();
+            Course newCourse = new Course();
 
+            //Creating the School Database
             List<Student> StudentList = new List<Student>();
             List<Employee> EmployeesList = new List<Employee>();
-            List<Grading> CourseList = new List<Grading>();
+            List<Grading> GradingList = new List<Grading>();
             List<Rooms> RoomList = new List<Rooms>();
+            List<Course> SchoolCourses = new List<Course>();
             
 
-            //the Main courses in the school
-            string[] SchoolCourses = new string[5];
+            //needed variables
+            //string[] SchoolCourses = new string[5];
+            string course;
+            Random random = new Random();
 
             Console.WriteLine("\t\t\t-------------------------------------------------\n");
             Console.WriteLine("\t\t\t\t   MetaWolves Educational system\n");
@@ -111,13 +116,25 @@ namespace School_Project
             Console.WriteLine("\t\t   ---------------------------------------------------------\n");
 
             Console.WriteLine("\t\tSTEP 3\n");
-            Console.WriteLine("Please enter 5 course names to the system making sure that each course begins with a capital letter:");
-            for (int i = 0; i < SchoolCourses.Length; i++)
+            Console.WriteLine("Please enter 5 course names to the system making sure that each course begins with a capital letter:(null for empty)");
+
+            for (int i = 0; i < 5; i++)
             {
-                SchoolCourses[i] = Console.ReadLine();
+                string courseName = Console.ReadLine();
+                int courseID = random.Next();
+
+                newCourse.SName = courseName;
+                newCourse.SID = courseID;
+                SchoolCourses.Add(newCourse);
             }
 
-            Console.WriteLine("You have added " + SchoolCourses.Length + " of courses successfully...");
+
+            //for (int i = 0; i < SchoolCourses.Length; i++)
+            //{
+            //    SchoolCourses[i] = Console.ReadLine();
+            //}
+
+            Console.WriteLine("You have added " + SchoolCourses.Count + " of courses successfully...");
 
             Console.Clear();
 
@@ -184,23 +201,21 @@ namespace School_Project
                                 if (index >= 0)
                                 {
                                     //Display the courses
-                                    Console.WriteLine("Our courses are:");
-                                    for (int j = 0; j < SchoolCourses.Length; j++)
-                                        Console.WriteLine(SchoolCourses[j].First() + " --> " + SchoolCourses[j]);
+                                    DisplayCourses(SchoolCourses);
 
-                                    Console.WriteLine("\nPlease enter the letter of the course in which you would like to attend:");
+                                    Console.WriteLine("\nPlease enter the Subject ID of the course in which you would like to attend:");
                                     Console.WriteLine("Hint: you can only register to 5 courses in each level and you have to register one course at a time");
-                                    char Stcourse = char.Parse(Console.ReadLine());
-
-                                    Stcourse = char.ToUpper(Stcourse);
+                                    int Stcourse = int.Parse(Console.ReadLine());
 
                                     if (StudentList[index].StudentCourses.Count < 5)
                                     {
-                                        for (int i = 0; i < SchoolCourses.Length; i++)
+                                        for (int i = 0; i < SchoolCourses.Count; i++)
                                         {
-                                            if (SchoolCourses[i].First() == Stcourse)
+                                            if (SchoolCourses[i].SID == Stcourse)
                                             {
-                                                StudentList[index].StudentCourses.Add(SchoolCourses[i]);
+                                                newCourse.SName = SchoolCourses[i].SName;
+                                                newCourse.SID = SchoolCourses[i].SID;
+                                                StudentList[index].StudentCourses.Add(newCourse);
                                                 break;
                                             }
 
@@ -239,16 +254,112 @@ namespace School_Project
                         if (choice2 == 4)
                             break;
 
-                    } while (choice > 0 && choice < 4);
+                    } while (choice2 > 0 && choice2 < 4);
                     break;
 
                 case 2:
                     choice = 0;
                     do
                     {
-                        Console.WriteLine();
+                        /*Menu employee:
+                                1- choose the role (teacher, manger)
+                                2-dispaly info
+                                3-if the choice was manger then other menu let him choose what he want to do 
+                                            1-add course
+                                            2 _ assign teacher
+                                            3 _ assign room 
+                                            4_ enter the max number of room*/
+
+                        Console.WriteLine("------------------------------");
+                        Console.WriteLine("Please choose your role in this school from the list below:");
+                        Console.WriteLine("1.Manager.");
+                        Console.WriteLine("2.Executive.");
+                        Console.WriteLine("3.Teacher.");
+                        Console.WriteLine("4.Exit");
+                        Console.WriteLine("------------------------------");
+
+                        Console.WriteLine("Your choice is:");
+                        choice = int.Parse(Console.ReadLine());
+
+                        
                         if (choice == 4)
                             break;
+
+                        switch(choice) 
+                        {
+                            case 1:
+                                Console.WriteLine("Enter your National ID:");
+                                SSN=Console.ReadLine();
+                                for(int i = 0;i<EmployeesList.Count;i++)
+                                    if (EmployeesList[i].GetSSN().Equals(SSN) && EmployeesList[i].GetRole().Equals("manager"))
+                                    {
+                                        Console.WriteLine("What would you like to do:");
+                                        Console.WriteLine("1. Assign teacher to course.");
+                                        Console.WriteLine("2. Add a course");
+                                        Console.WriteLine("3. Delete a course");
+                                        Console.WriteLine("4. Assign class room");
+                                        Console.WriteLine("5. Display All Employees");
+                                        Console.WriteLine("6. Display Teachers");
+                                        Console.WriteLine("7. Display Executives");
+                                        Console.WriteLine("8. Display Students");
+                                        Console.WriteLine("9. Exit");
+                                        Console.WriteLine("Your choice is:");
+                                        choice2 = int.Parse(Console.ReadLine());
+
+                                        if(choice2 == 1)
+                                        {
+                                            Console.WriteLine("Enter the Teacher's National ID:");
+                                            SSN= Console.ReadLine();
+                                            for (int j = 0; j < EmployeesList.Count; j++)
+                                            {
+                                                if (EmployeesList[j].GetSSN().Equals(SSN) && EmployeesList[j].GetRole().Equals("teacher"))
+                                                {
+                                                    if (EmployeesList[j].GetRole().Equals(null))
+                                                    {
+                                                        DisplayCourses(SchoolCourses);
+                                                        Console.WriteLine("Enter the the course ID:");
+                                                        int CourseID=int.Parse(Console.ReadLine());
+                                                        course = FindCourse(SchoolCourses, CourseID);
+                                                        newCourse.SID = CourseID;
+                                                        newCourse.SName = course;
+                                                        newTeacher = newTeacher.AddSubjectToTeacher(EmployeesList[j], newCourse);
+                                                        EmployeesList[j] = newTeacher;
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("Sorry this teacher is assigned to a course");
+                                                        break;
+                                                    }
+                                                }
+                                                
+                                            }
+                                        }
+                                        else if(choice2 == 2)
+                                        {
+                                            //for(int x=0; x<SchoolCourses.Length;i++)
+                                            //{
+                                                
+                                            //}
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Sorry you do not have access to this territory.");
+                                    }
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            default:
+                                Console.WriteLine("Invalid input...please try again");
+                                continue;
+                        }
+
 
                     } while (choice > 0 && choice < 4);
                     break;
@@ -268,6 +379,23 @@ namespace School_Project
                 }
             }
             return -1;
+        }
+
+        public static void DisplayCourses(List<Course> SchoolCourses)
+        {
+            Console.WriteLine("Our courses are:");
+            for (int j = 0; j < SchoolCourses.Count; j++)
+                Console.WriteLine(SchoolCourses[j].SID+" --->"+SchoolCourses[j].SName);
+        }
+
+        public static string FindCourse(List<Course> SchoolCourses,int CourseID)
+        {
+            for (int i = 0; i < SchoolCourses.Count; i++)
+            {
+                if (SchoolCourses[i].SID == CourseID)
+                    return SchoolCourses[i].SName;
+            }
+            return null;
         }
     }
 }
