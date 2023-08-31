@@ -10,7 +10,7 @@ namespace School_Project
     {
         private string subjectassigned;
 
-        public ClassRoom(string subjectassigned, int max_Capacity, int roomNo, bool accupied): base(max_Capacity, roomNo, accupied)
+        public ClassRoom(string subjectassigned, int max_Capacity, int roomNo, bool accupied, string type) : base(max_Capacity, roomNo, accupied,type)
         {
             this.subjectassigned = subjectassigned;
         }
