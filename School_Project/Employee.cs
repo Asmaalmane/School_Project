@@ -98,5 +98,24 @@ namespace School_Project
         { 
             return Salary; 
         }
+
+        public Employee EmployeeRegistration(string SSN)
+        {
+            this.SetSSN(SSN);
+            Console.WriteLine("First Name:");
+            this.setFName(Console.ReadLine());
+            Console.WriteLine("Last Name:");
+            this.setLName(Console.ReadLine());
+            Console.WriteLine("Date of birth:");
+            this.SetDOB(Console.ReadLine());
+            Console.WriteLine("Gender (M/F):");
+            this.setGender(char.ToUpper(char.Parse(Console.ReadLine())));
+            Console.WriteLine("Please enter your role with lowercase letters (manager,teacher,or executive):");
+            this.SetRole(Console.ReadLine());
+            Console.WriteLine("Salary:");
+            this.SetSalary(decimal.Parse(Console.ReadLine()));
+
+            return this;
+        }
     }
 }

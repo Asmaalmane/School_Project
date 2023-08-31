@@ -12,13 +12,13 @@ namespace School_Project
     {
         static void Main(string[] args)
         {
-            // create the school object that must be intiated by the manager
-            School school = new School();
+            // create neccessary objects
             Student newStudent = new Student();
+            Teacher newTeacher=new Teacher();
+            Executive newExecutive = new Executive();
 
             List<Student> StudentList = new List<Student>();
             List<Employee> EmployeesList = new List<Employee>();
-
             List<Grading> CourseList = new List<Grading>();
             
 
@@ -63,14 +63,35 @@ namespace School_Project
             string name = Console.ReadLine();
             Console.WriteLine("Where is your location?");
             string location = Console.ReadLine();
+            
             Console.WriteLine("How many students are registered in your school so far?");
             int num_of_students = int.Parse(Console.ReadLine());
-            Console.WriteLine("How many employees are working at your school including you?");
+            for(int j=1;j<=num_of_students;j++)
+            {
+                Console.WriteLine("Student No. " + j+" :");
+                Console.WriteLine("National ID:");
+                SSN=Console.ReadLine();
+                newStudent = newStudent.StudentRegistration(SSN);
+                StudentList.Add(newStudent);
+                Console.WriteLine("----------------------");
+            }
+            
+            Console.WriteLine("How many employees are working at your school excluding you?");
             int num_of_employees = int.Parse(Console.ReadLine());
+            for(int i=0;i<num_of_employees;i++)
+            {
+                Console.WriteLine("Employees No. " + j + " :");
+                Console.WriteLine("National ID:");
+                SSN = Console.ReadLine();
+                newStudent = newStudent.StudentRegistration(SSN);
+                StudentList.Add(newStudent);
+                Console.WriteLine("----------------------");
+            }
+            
             Console.WriteLine("How many working spaces (rooms) are at your school?");
             int num_of_rooms = int.Parse(Console.ReadLine());
 
-            School S = new School(name, location, num_of_students, num_of_employees, num_of_rooms);
+            School school = new School(name, location, num_of_students, num_of_employees, num_of_rooms);
             Console.WriteLine("Your School information is Successfully added to the system...");
 
             Console.Clear();
@@ -142,6 +163,7 @@ namespace School_Project
 
                                 newStudent = newStudent.StudentRegistration(SSN);
                                 StudentList.Add(newStudent);
+                                school.Num_of_students=+1;
                                 Console.WriteLine("You are successfully registered in this school...");
                                 Console.WriteLine("Please choose number 2 from the menu to register your course");
 
@@ -236,31 +258,6 @@ namespace School_Project
                 }
             }
             return -1;
-        }
-        
-
-        public static Employee ExecutiveRegistration() 
-        {
-            Console.WriteLine("Natinal ID");
-            string SSN = Console.ReadLine();
-            Console.WriteLine("First Name:");
-            string Fname = Console.ReadLine();
-            Console.WriteLine("Last Name:");
-            string Lname = Console.ReadLine();
-            Console.WriteLine("Date of birth:");
-            string DOB = Console.ReadLine();
-            Console.WriteLine("Gender (M/F):");
-            char Gender = char.Parse(Console.ReadLine());
-            Console.WriteLine("Please enter your role with lowercase letters (manager,teacher,or executive):");
-            string Role= Console.ReadLine();
-            Console.WriteLine("Salary:");
-            decimal salary = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Head of which department (School, High School, Mid School, Primary School, Kindergarten, or NA:");
-            string HeadOf= Console.ReadLine();
-
-            Gender = char.ToUpper(Gender);
-            Executive executive = new Executive(Fname, Lname, DOB, Gender, SSN, Role, salary, HeadOf);
-            return executive;
         }
     }
 }

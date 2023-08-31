@@ -15,6 +15,10 @@ namespace School_Project
             this.HeadOf = HeadOf;
         }
 
+        public Executive()
+        {
+        }
+
         public void SetHeadOf(string HeadOf)
         {
             this.HeadOf = HeadOf;
@@ -23,6 +27,15 @@ namespace School_Project
         public string GetHeadOf()
         {
             return HeadOf;
+        }
+
+        public Executive ExecutiveRegistration(string SSN)
+        {
+            this.EmployeeRegistration(SSN);
+            Console.WriteLine("Head of which department (School, High School, Mid School, Primary School, Kindergarten, or NA:");
+            this.HeadOf=Console.ReadLine();
+
+            return this;
         }
 
         public void Display()

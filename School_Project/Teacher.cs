@@ -15,6 +15,10 @@ namespace School_Project
             this.SubjectAssigned = SubjectAssigned;
         }
 
+        public Teacher()
+        {
+        }
+
         public void SetSubjectAssigned(string SubjectAssigned) 
         { 
             this.SubjectAssigned = SubjectAssigned; 
@@ -23,6 +27,15 @@ namespace School_Project
         public string GetSubjectAssigned() 
         { 
             return SubjectAssigned; 
+        }
+
+        public Teacher TeacherRegistration(string SSN, string[] courses)
+        {
+            this.EmployeeRegistration(SSN);
+            Console.WriteLine("Which course are you assigned to?");
+            this.SubjectAssigned = Console.ReadLine();
+
+            return this;
         }
 
         public void Display()

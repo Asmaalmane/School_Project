@@ -39,7 +39,7 @@ namespace School_Project
         public int Num_of_students
         {
             get { return this.num_of_students; }
-            //set { this.Num_of_students++; }
+            set { this.num_of_students=value; }
         }
 
         public int Num_of_employee
@@ -58,10 +58,5 @@ namespace School_Project
         {
             this.Num_of_employee++;
         }
-
-        //public void Students_registeration()
-        //{
-        //    this.Num_of_students++;
-        //}
     }
 }
